@@ -1,0 +1,47 @@
+﻿<Window x:Class="dip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dip"
+        mc:Ignorable="d"
+        Title="ООО Текстиль Профи - М" MinHeight="450" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Background="#303841">
+            <Image HorizontalAlignment="Left" VerticalAlignment="Center"  Source="/res/pngwing.com.png" Width="81" Height="126" Margin="0,0,0,-26" />
+
+
+
+        </Border>
+        <TextBlock Text="ООО Текстиль профи -М" Foreground="#eeee" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+        
+
+        
+        <Button  Content="Войти" Foreground="#eeee" Background="#D72323" HorizontalAlignment="Right" Margin="663,27,10,0" VerticalAlignment="Top" Width="75" Height="47"   FontSize="14" Click="autorClick"/>
+
+        <StackPanel Background="#3A4750" Grid.Row="1">
+            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="36" Foreground="#eeee" FontWeight="Bold"> Регистрация</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Введите логин</TextBlock>
+            <TextBox x:Name="login" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Height="25"></TextBox >
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Введите пароль</TextBlock>
+            <PasswordBox x:Name="password" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Foreground="#eeee" Height="25"></PasswordBox >
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Повторите пароль</TextBlock>
+            <PasswordBox x:Name="proof" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Height="25"></PasswordBox >
+            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Height="35" FontWeight="Bold" Click="regClick" >Зарегистрироваться</Button>
+            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Width="162" Height="35" FontWeight="Bold" Margin="0,10,0,0" Click="tovariCkick"  >Каталог товаров</Button>
+            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Height="35" FontWeight="Bold" Click="merClick"  >Merches</Button>
+
+        </StackPanel>
+
+
+
+
+
+
+
+    </Grid>
+</Window>
