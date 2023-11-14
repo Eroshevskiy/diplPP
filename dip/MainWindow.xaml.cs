@@ -125,10 +125,7 @@ namespace dip
             tovar.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void merClick(object sender, RoutedEventArgs e)
         {

@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dip.pages"
         mc:Ignorable="d"
-        Title="merches" Height="450" Width="800">
-    <Grid Background="#3A4750">
+        Title="merches" MinHeight="450" MinWidth="800">
+    <Grid Background="#3A4750" >
+        
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
+            
         </Grid.RowDefinitions>
 
 
@@ -67,6 +69,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#D72323" Foreground="#eeee" Width="60" Height="30" Margin="0,0,10,0" Click="mainClick">Назад</Button>
 
     </Grid>
 </Window>

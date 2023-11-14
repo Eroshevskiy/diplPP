@@ -20,7 +20,7 @@ namespace dip.models
         public string descreption { get; set; }
         public string manufacturer { get; set; }
         public int price { get; set; }
-        public Nullable<int> discount { get; set; }
         public string title { get; set; }
+        public Nullable<int> discount { get; set; }
     }
 }

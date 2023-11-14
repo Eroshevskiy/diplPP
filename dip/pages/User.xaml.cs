@@ -31,12 +31,27 @@ namespace dip.pages
             main.Show();
         }
 
-        private void toveriClick(object sender, RoutedEventArgs e)
-        {
-            tovari tovar = new tovari();
-            Visibility =Visibility.Hidden;
-            tovar.Show();
+       
 
+        private void infoClick(object sender, RoutedEventArgs e)
+        {
+            info inf = new info();
+            Visibility = Visibility.Hidden;
+            inf.Show();
+        }
+
+        private void contClick(object sender, RoutedEventArgs e)
+        {
+            contacts con = new contacts();
+            Visibility = Visibility.Hidden;
+            con.Show();
+        }
+
+        private void merchClick(object sender, RoutedEventArgs e)
+        {
+            merches merc = new merches();
+            Visibility = Visibility.Hidden;
+            merc.Show();
         }
     }
 }

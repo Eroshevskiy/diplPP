@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:dip"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="{x:Type Button}">
+            <!-- Цвет текста кнопки -->
+            <Setter Property="Background" Value="#D72323" />
+            <Setter Property="Foreground" Value="#eeee" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#eeee" />
+        </Style>
+        
     </Application.Resources>
 </Application>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="dip.pages.info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dip.pages"
+        mc:Ignorable="d"
+        Title="info" Height="450" Width="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="#3A4750">
+
+
+
+            <StackPanel >
+                <Button Background="#D72323" Foreground="#eeee" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" Width="60" Height="30" Content="Назад" Click="userClick"/>
+                <Image Source="/res/информация.png" Margin="180,-25,180,20" Height="183" />
+
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="#eeee" Grid.Row="1" FontSize="24" Margin="0,0,0,10"><Run Text="Информация о компаниии"/></TextBlock>
+                <TextBlock  Foreground="#eeee" FontSize="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0" ><Run Text="&quot;Текстиль Профи М&quot; — это не просто компания, а твой надежный партнер в мире текстиля с богатой историей,"/></TextBlock>
+                <TextBlock  Foreground="#eeee"  FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0" ><Run Text="начавшейся в 2015 году С момента своего основания она стремится не только к продаже товаров, но и к созданию"/></TextBlock>
+                <TextBlock  Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0" ><Run Text="уникального опыта для своих клиентов."/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock  Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="Наша гордость — постоянное улучшение качества продукции. Мы не останавливаемся на достигнутом и"/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="внимательно слушаем потребности наших покупателей, чтобы предлагать текстиль, который не только соответствует"/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="но и превосходит ожидания.Но, что делает нас по-настоящему уникальными, так это наше стремление к доступности. Мы"/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="гордимся тем, что, несмотря на постоянное улучшение качества, наши цены остаются низкими в сравнении с конкурентами."/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="Мы верим, что качественный текстиль должен быть доступен каждому, и мы делаем всё возможное, чтобы это осуществить."/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="&quot;Текстиль Профи М&quot; — не просто магазин, это место, где вы находите не только продукцию высокого качества, но и заботу"/></TextBlock>
+                <TextBlock Foreground="#eeee" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="о вашем комфорте. Доверьтесь нам, и мы будем продолжать радовать вас лучшим текстилем по лучшим ценам."/></TextBlock>
+
+            </StackPanel>
+
+
+
+
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>

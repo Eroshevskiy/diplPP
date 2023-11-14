@@ -15,10 +15,6 @@ namespace dip.models
     
     public partial class dipEntities : DbContext
     {
-        public dipEntities()
-            : base("name=dipEntities")
-        {
-        }
         private static dipEntities context;
         public static dipEntities GetContext()
         {
@@ -26,7 +22,12 @@ namespace dip.models
                 context = new dipEntities();
             return context;
         }
+        public dipEntities()
+            : base("name=dipEntities")
+        {
 
+        }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

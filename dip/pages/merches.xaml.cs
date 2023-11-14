@@ -24,6 +24,15 @@ namespace dip.pages
             InitializeComponent();
 
             lv.ItemsSource = models.dipEntities.GetContext().merch.ToList();
+
+
+        }
+
+        private void mainClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            Visibility = Visibility.Hidden;
+            main.Show();
         }
     }
 }

@@ -10,8 +10,8 @@
           <ScalarProperty Name="descreption" ColumnName="descreption" />
           <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
           <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="discount" ColumnName="discount" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

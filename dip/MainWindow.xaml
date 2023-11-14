@@ -28,12 +28,12 @@
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Введите логин</TextBlock>
             <TextBox x:Name="login" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Height="25"></TextBox >
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Введите пароль</TextBlock>
-            <PasswordBox x:Name="password" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Foreground="#eeee" Height="25"></PasswordBox >
+            <PasswordBox x:Name="password" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162"  Height="25"></PasswordBox >
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Повторите пароль</TextBlock>
             <PasswordBox x:Name="proof" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Height="25"></PasswordBox >
             <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Height="35" FontWeight="Bold" Click="regClick" >Зарегистрироваться</Button>
-            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Width="162" Height="35" FontWeight="Bold" Margin="0,10,0,0" Click="tovariCkick"  >Каталог товаров</Button>
-            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Height="35" FontWeight="Bold" Click="merClick"  >Merches</Button>
+            
+            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,10,0,0" Width="162" Height="35" FontWeight="Bold" Click="merClick"  >Каталог товаров</Button>
 
         </StackPanel>
 
