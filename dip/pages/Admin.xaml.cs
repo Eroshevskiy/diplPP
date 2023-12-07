@@ -1,6 +1,7 @@
 ﻿using dip.models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,15 @@ namespace dip.pages
     /// </summary>
     public partial class Admin : Window
     {
+        private ObservableCollection<merch> merchCollection;
         public Admin()
         {
             InitializeComponent();
-            BDWorkers.ItemsSource = dipEntities.GetContext().merch.ToList();
+            
+            merchCollection = new ObservableCollection<merch>(dipEntities.GetContext().merch.ToList());
+            BDWorkers.ItemsSource = merchCollection;
         }
+
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +64,20 @@ namespace dip.pages
             AddMerches add = new AddMerches(null);
             this.Visibility = Visibility.Hidden;
             add.Show();
+        }
+        private void RefreshPage()
+        {
+            merchCollection.Clear();
+            foreach (var merch in dipEntities.GetContext().merch.ToList())
+            {
+                merchCollection.Add(merch);
+            }
+        }
+
+        private void obnovClick(object sender, RoutedEventArgs e)
+        {
+           
+                RefreshPage();
         }
     }
 }

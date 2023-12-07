@@ -40,3 +40,4 @@ D:\dip\dip\obj\Debug\dip.csproj.CopyComplete
 D:\dip\dip\obj\Debug\dip.exe
 D:\dip\dip\obj\Debug\dip.pdb
 D:\dip\dip\obj\Debug\App.baml
+D:\dip\dip\obj\Debug\dip.csproj.AssemblyReference.cache
