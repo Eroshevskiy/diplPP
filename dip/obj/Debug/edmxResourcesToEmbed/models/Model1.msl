@@ -1,22 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище dipModelContainer" CdmEntityContainer="dipEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище dip2ModelContainer" CdmEntityContainer="dipEntitie">
     <EntitySetMapping Name="merch">
-      <EntityTypeMapping TypeName="dipModel.merch">
+      <EntityTypeMapping TypeName="dip2Model.merch">
         <MappingFragment StoreEntitySet="merch">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="photo" ColumnName="photo" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="descreption" ColumnName="descreption" />
           <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
           <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="dip2Model.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_users" ColumnName="id_users" />
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="id_point" ColumnName="id_point" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="delivery_days" ColumnName="delivery_days" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="point">
+      <EntityTypeMapping TypeName="dip2Model.point">
+        <MappingFragment StoreEntitySet="point">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sostav">
+      <EntityTypeMapping TypeName="dip2Model.sostav">
+        <MappingFragment StoreEntitySet="sostav">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_orders" ColumnName="id_orders" />
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
           <ScalarProperty Name="discount" ColumnName="discount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="dip2Model.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status_name" ColumnName="status_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="dipModel.sysdiagrams">
+      <EntityTypeMapping TypeName="dip2Model.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -27,7 +71,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="type_users">
-      <EntityTypeMapping TypeName="dipModel.type_users">
+      <EntityTypeMapping TypeName="dip2Model.type_users">
         <MappingFragment StoreEntitySet="type_users">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="role" ColumnName="role" />
@@ -35,12 +79,22 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="dipModel.users">
+      <EntityTypeMapping TypeName="dip2Model.users">
         <MappingFragment StoreEntitySet="users">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="id_type" ColumnName="id_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vhodHis">
+      <EntityTypeMapping TypeName="dip2Model.vhodHis">
+        <MappingFragment StoreEntitySet="vhodHis">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_users" ColumnName="id_users" />
+          <ScalarProperty Name="DateTimeLog" ColumnName="DateTimeLog" />
+          <ScalarProperty Name="TypeVhod" ColumnName="TypeVhod" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

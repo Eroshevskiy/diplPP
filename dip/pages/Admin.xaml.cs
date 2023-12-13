@@ -26,7 +26,7 @@ namespace dip.pages
         {
             InitializeComponent();
             
-            merchCollection = new ObservableCollection<merch>(dipEntities.GetContext().merch.ToList());
+            merchCollection = new ObservableCollection<merch>(dipEntitie.GetContext().merch.ToList());
             BDWorkers.ItemsSource = merchCollection;
         }
 
@@ -46,11 +46,11 @@ namespace dip.pages
             {
                 try
                 {
-                    IEnumerable<merch> enumerable = dipEntities.GetContext().merch.RemoveRange((IEnumerable<merch>)merchDell);
-                    dipEntities.GetContext().SaveChanges();
+                    IEnumerable<merch> enumerable = dipEntitie.GetContext().merch.RemoveRange((IEnumerable<merch>)merchDell);
+                    dipEntitie.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены!");
 
-                    BDWorkers.ItemsSource = dipEntities.GetContext().merch.ToList();
+                    BDWorkers.ItemsSource = dipEntitie.GetContext().merch.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -68,7 +68,7 @@ namespace dip.pages
         private void RefreshPage()
         {
             merchCollection.Clear();
-            foreach (var merch in dipEntities.GetContext().merch.ToList())
+            foreach (var merch in dipEntitie.GetContext().merch.ToList())
             {
                 merchCollection.Add(merch);
             }
@@ -78,6 +78,28 @@ namespace dip.pages
         {
            
                 RefreshPage();
+        }
+
+        private void prosmClick(object sender, RoutedEventArgs e)
+        {
+            prosmZak prosm = new prosmZak();
+            Visibility = Visibility.Hidden;
+            prosm.Show();
+        }
+
+        private void LogHis(object sender, RoutedEventArgs e)
+        {
+            LogHistory log = new LogHistory();
+            Visibility = Visibility.Hidden;
+            log.Show();
+        }
+
+        private void AutClick(object sender, RoutedEventArgs e)
+        {
+            autor aut = new autor();
+            Visibility = Visibility.Hidden;
+            aut.Show();
+
         }
     }
 }

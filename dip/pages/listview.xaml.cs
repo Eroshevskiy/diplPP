@@ -22,7 +22,7 @@ namespace dip.pages
         public listview()
         {
             InitializeComponent();
-            lv.ItemsSource = models.dipEntities.GetContext().merch.ToList();
+            lv.ItemsSource = models.dipEntitie.GetContext().merch.ToList();
 
         }
     }

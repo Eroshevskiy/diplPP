@@ -8,6 +8,6 @@ namespace dip.classes
 {
     class dboconnect
     {
-        public static models.dipEntities modeldb;
+        public static models.dipEntitie modeldb;
     }
 }

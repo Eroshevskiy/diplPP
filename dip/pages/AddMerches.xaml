@@ -7,24 +7,26 @@
         mc:Ignorable="d"
         Title="AddMerches" MinHeight="450" MinWidth="800">
     <Grid Background="#3A4750">
-        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Click="workClick">Назад</Button>
+        
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-
             <StackPanel Margin="10">
-                <TextBlock Margin="0 0 0 10">Название</TextBlock>
-                <TextBlock Margin="0 0 0 10">Описание</TextBlock>
-                <TextBlock Margin="0 0 0 10">Производитель</TextBlock>
-                <TextBlock Margin="0 0 0 10">Цена</TextBlock>
-                
+                <TextBlock Margin="0 2 0 10">Название</TextBlock>
+                <TextBlock Margin="0 4 0 10">Описание</TextBlock>
+                <TextBlock Margin="0 4 0 10">Производитель</TextBlock>
+                <TextBlock Margin="0 5 0 10">Цена</TextBlock>
+                <TextBlock Margin="0 4 0 10">Скидка</TextBlock>
             </StackPanel>
             <StackPanel Margin="10">
                 <TextBox Margin="0 0 0 10" Text="{Binding name}"></TextBox>
                 <TextBox Margin="0 0 0 10" Text="{Binding descreption}"></TextBox>
                 <TextBox Margin="0 0 0 10" Text="{Binding manufacturer}"></TextBox>
                 <TextBox Margin="0 0 0 10" Text="{Binding price}"></TextBox>
-
-                <Button  Width="auto" Click="Save"   >Сохранить</Button>
+                <TextBox Margin="0 0 0 10" Text="{Binding discount}"></TextBox>
+                <Button Click="Foto" Width="auto">Выбрать фото</Button>
+                <Image Width="100" Name="PreviewImage" Source="{Binding photo}"></Image>
+                <Button Width="auto" Click="Save">Сохранить</Button>
             </StackPanel>
         </WrapPanel>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="nazClick">Назад</Button>
     </Grid>
 </Window>

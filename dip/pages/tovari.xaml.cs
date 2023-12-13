@@ -22,7 +22,7 @@ namespace dip.pages
         public tovari()
         {
             InitializeComponent();
-            var merches = models.dipEntities.GetContext().merch.ToList();
+            var merches = models.dipEntitie.GetContext().merch.ToList();
             tovariBD.ItemsSource = merches;
         }
     }

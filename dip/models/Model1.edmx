@@ -4,19 +4,59 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище dipModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище dip2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="merch">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="photo" Type="nvarchar" MaxLength="50" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="descreption" Type="text" Nullable="false" />
+          <Property Name="descreption" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="title" Type="text" />
           <Property Name="discount" Type="int" />
+          <Property Name="photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_users" Type="int" Nullable="false" />
+          <Property Name="id_status" Type="int" Nullable="false" />
+          <Property Name="id_point" Type="int" Nullable="false" />
+          <Property Name="order_date" Type="date" Nullable="false" />
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="discount" Type="int" />
+          <Property Name="total_cost" Type="int" />
+          <Property Name="delivery_days" Type="int" />
+        </EntityType>
+        <EntityType Name="point">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sostav">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_orders" Type="int" Nullable="false" />
+          <Property Name="id_merch" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="total_cost" Type="int" />
+          <Property Name="discount" Type="int" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -32,7 +72,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="role" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="users">
@@ -44,6 +84,75 @@
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="id_type" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="vhodHis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_users" Type="int" />
+          <Property Name="DateTimeLog" Type="datetime" />
+          <Property Name="TypeVhod" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_orders_point">
+          <End Role="point" Type="Self.point" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="point">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_point" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sostav_merch">
+          <End Role="merch" Type="Self.merch" Multiplicity="1" />
+          <End Role="sostav" Type="Self.sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sostav">
+              <PropertyRef Name="id_merch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sostav_orders">
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="sostav" Type="Self.sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sostav">
+              <PropertyRef Name="id_orders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_users_type_users">
           <End Role="type_users" Type="Self.type_users" Multiplicity="1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -56,33 +165,123 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище dipModelContainer">
+        <Association Name="FK_vhodHis_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="vhodHis" Type="Self.vhodHis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vhodHis">
+              <PropertyRef Name="id_users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище dip2ModelContainer">
           <EntitySet Name="merch" EntityType="Self.merch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="point" EntityType="Self.point" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sostav" EntityType="Self.sostav" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="type_users" EntityType="Self.type_users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vhodHis" EntityType="Self.vhodHis" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_orders_point" Association="Self.FK_orders_point">
+            <End Role="point" EntitySet="point" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_status" Association="Self.FK_orders_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_users" Association="Self.FK_orders_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sostav_merch" Association="Self.FK_sostav_merch">
+            <End Role="merch" EntitySet="merch" />
+            <End Role="sostav" EntitySet="sostav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sostav_orders" Association="Self.FK_sostav_orders">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="sostav" EntitySet="sostav" />
+          </AssociationSet>
           <AssociationSet Name="FK_users_type_users" Association="Self.FK_users_type_users">
             <End Role="type_users" EntitySet="type_users" />
             <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vhodHis_users" Association="Self.FK_vhodHis_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="vhodHis" EntitySet="vhodHis" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="dip2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="merch">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="descreption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descreption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="discount" Type="Int32" />
+          <Property Name="photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sostav" Relationship="Self.FK_sostav_merch" FromRole="merch" ToRole="sostav" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_users" Type="Int32" Nullable="false" />
+          <Property Name="id_status" Type="Int32" Nullable="false" />
+          <Property Name="id_point" Type="Int32" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="discount" Type="Int32" />
+          <Property Name="total_cost" Type="Int32" />
+          <Property Name="delivery_days" Type="Int32" />
+          <NavigationProperty Name="point" Relationship="Self.FK_orders_point" FromRole="orders" ToRole="point" />
+          <NavigationProperty Name="status" Relationship="Self.FK_orders_status" FromRole="orders" ToRole="status" />
+          <NavigationProperty Name="users" Relationship="Self.FK_orders_users" FromRole="orders" ToRole="users" />
+          <NavigationProperty Name="sostav" Relationship="Self.FK_sostav_orders" FromRole="orders" ToRole="sostav" />
+        </EntityType>
+        <EntityType Name="point">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_orders_point" FromRole="point" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="sostav">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_orders" Type="Int32" Nullable="false" />
+          <Property Name="id_merch" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="total_cost" Type="Int32" />
+          <Property Name="discount" Type="Int32" />
+          <NavigationProperty Name="merch" Relationship="Self.FK_sostav_merch" FromRole="sostav" ToRole="merch" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_sostav_orders" FromRole="sostav" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_orders_status" FromRole="status" ToRole="orders" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -98,7 +297,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="users" Relationship="Self.FK_users_type_users" FromRole="type_users" ToRole="users" />
         </EntityType>
@@ -110,8 +309,80 @@
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="id_type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_orders_users" FromRole="users" ToRole="orders" />
           <NavigationProperty Name="type_users" Relationship="Self.FK_users_type_users" FromRole="users" ToRole="type_users" />
+          <NavigationProperty Name="vhodHis" Relationship="Self.FK_vhodHis_users" FromRole="users" ToRole="vhodHis" />
         </EntityType>
+        <EntityType Name="vhodHis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_users" Type="Int32" />
+          <Property Name="DateTimeLog" Type="DateTime" Precision="3" />
+          <Property Name="TypeVhod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="Self.FK_vhodHis_users" FromRole="vhodHis" ToRole="users" />
+        </EntityType>
+        <Association Name="FK_sostav_merch">
+          <End Role="merch" Type="Self.merch" Multiplicity="1" />
+          <End Role="sostav" Type="Self.sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sostav">
+              <PropertyRef Name="id_merch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_point">
+          <End Role="point" Type="Self.point" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="point">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_point" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sostav_orders">
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="sostav" Type="Self.sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sostav">
+              <PropertyRef Name="id_orders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_users_type_users">
           <End Role="type_users" Type="Self.type_users" Multiplicity="1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -124,14 +395,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dipEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_vhodHis_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="vhodHis" Type="Self.vhodHis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vhodHis">
+              <PropertyRef Name="id_users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dipEntitie" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="merch" EntityType="Self.merch" />
+          <EntitySet Name="orders" EntityType="Self.orders" />
+          <EntitySet Name="point" EntityType="Self.point" />
+          <EntitySet Name="sostav" EntityType="Self.sostav" />
+          <EntitySet Name="status" EntityType="Self.status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="type_users" EntityType="Self.type_users" />
           <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="vhodHis" EntityType="Self.vhodHis" />
+          <AssociationSet Name="FK_sostav_merch" Association="Self.FK_sostav_merch">
+            <End Role="merch" EntitySet="merch" />
+            <End Role="sostav" EntitySet="sostav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_point" Association="Self.FK_orders_point">
+            <End Role="point" EntitySet="point" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_status" Association="Self.FK_orders_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_users" Association="Self.FK_orders_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sostav_orders" Association="Self.FK_sostav_orders">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="sostav" EntitySet="sostav" />
+          </AssociationSet>
           <AssociationSet Name="FK_users_type_users" Association="Self.FK_users_type_users">
             <End Role="type_users" EntitySet="type_users" />
             <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vhodHis_users" Association="Self.FK_vhodHis_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="vhodHis" EntitySet="vhodHis" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -139,23 +451,67 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище dipModelContainer" CdmEntityContainer="dipEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dip2ModelContainer" CdmEntityContainer="dipEntitie">
           <EntitySetMapping Name="merch">
-            <EntityTypeMapping TypeName="dipModel.merch">
+            <EntityTypeMapping TypeName="dip2Model.merch">
               <MappingFragment StoreEntitySet="merch">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="descreption" ColumnName="descreption" />
                 <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
                 <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="dip2Model.orders">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_users" ColumnName="id_users" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="id_point" ColumnName="id_point" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="delivery_days" ColumnName="delivery_days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="point">
+            <EntityTypeMapping TypeName="dip2Model.point">
+              <MappingFragment StoreEntitySet="point">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sostav">
+            <EntityTypeMapping TypeName="dip2Model.sostav">
+              <MappingFragment StoreEntitySet="sostav">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_orders" ColumnName="id_orders" />
+                <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="dip2Model.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status_name" ColumnName="status_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="dipModel.sysdiagrams">
+            <EntityTypeMapping TypeName="dip2Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -166,7 +522,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="type_users">
-            <EntityTypeMapping TypeName="dipModel.type_users">
+            <EntityTypeMapping TypeName="dip2Model.type_users">
               <MappingFragment StoreEntitySet="type_users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="role" ColumnName="role" />
@@ -174,12 +530,22 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="dipModel.users">
+            <EntityTypeMapping TypeName="dip2Model.users">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="id_type" ColumnName="id_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vhodHis">
+            <EntityTypeMapping TypeName="dip2Model.vhodHis">
+              <MappingFragment StoreEntitySet="vhodHis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_users" ColumnName="id_users" />
+                <ScalarProperty Name="DateTimeLog" ColumnName="DateTimeLog" />
+                <ScalarProperty Name="TypeVhod" ColumnName="TypeVhod" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

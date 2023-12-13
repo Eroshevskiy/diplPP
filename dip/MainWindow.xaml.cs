@@ -24,7 +24,7 @@ namespace dip
         public MainWindow()
         {
             InitializeComponent();
-            classes.dboconnect.modeldb = new models.dipEntities();
+            classes.dboconnect.modeldb = new models.dipEntitie();
 
         }
 
@@ -127,11 +127,8 @@ namespace dip
 
         
 
-        private void merClick(object sender, RoutedEventArgs e)
-        {
-            merches merc = new merches();
-            Visibility = Visibility.Hidden;
-            merc.Show();
-        }
+        
+
+        
     }
 }

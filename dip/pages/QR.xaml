@@ -1,0 +1,24 @@
+﻿<Window x:Class="dip.pages.QR"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dip.pages"
+        mc:Ignorable="d"
+        Title="QR" Height="450" Width="800">
+    <Grid Background="#3A4750">
+        <StackPanel Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center " Background="#3A4750" >
+
+            <Border Height="250" Width="350" BorderBrush="Black" BorderThickness="1">
+                <InkCanvas x:Name="barcodeCan" Height="250" Width="347" Background="#3A4750" EditingMode="GestureOnly"  IsEnabled="False"/>
+            </Border>
+
+            <TextBox x:Name="CodeTB" HorizontalAlignment="Center" Width="200" Height="30" Margin="0,16" SpellCheck.IsEnabled="True" TextChanged="CodeTB_TextChanged" MaxLength="13"/>
+
+            <Button x:Name="SaveBtn" Content="Печать" Height="30" Click="SaveQr"/>
+
+        </StackPanel>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="prosmClick">Назад</Button>
+
+    </Grid>
+</Window>

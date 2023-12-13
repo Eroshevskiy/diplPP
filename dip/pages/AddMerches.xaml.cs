@@ -1,4 +1,5 @@
 ﻿using dip.models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,9 @@ namespace dip.pages
     public partial class AddMerches : Window
     {
         private merch currentmerch = new merch();
+        public OpenFileDialog ofd = new OpenFileDialog();
+        private string newsourthpath = string.Empty;
+        private bool flag = false;
         public AddMerches(merch sellectedmer)
         {
             InitializeComponent();
@@ -37,7 +41,7 @@ namespace dip.pages
         {
             if (currentmerch.id == 0)
             {
-                dipEntities.GetContext().merch.Add(currentmerch);
+                dipEntitie.GetContext().merch.Add(currentmerch);
             }
 
             DbContextTransaction dbContextTransaction = null;
@@ -46,12 +50,12 @@ namespace dip.pages
             {
                 if (currentmerch.id == 0)
                 {
-                    dipEntities.GetContext().merch.Add(currentmerch);
+                    dipEntitie.GetContext().merch.Add(currentmerch);
                 }
 
-                dbContextTransaction = dipEntities.GetContext().Database.BeginTransaction();
+                dbContextTransaction = dipEntitie.GetContext().Database.BeginTransaction();
 
-                dipEntities.GetContext().SaveChanges();
+                dipEntitie.GetContext().SaveChanges();
 
                 MessageBox.Show("Информация сохранена!");
                 dbContextTransaction.Commit();
@@ -88,7 +92,25 @@ namespace dip.pages
             }
         }
 
-        private void workClick(object sender, RoutedEventArgs e)
+        
+        private void Foto(object sender, RoutedEventArgs e)
+        {
+            string source = Environment.CurrentDirectory;
+            if (ofd.ShowDialog() == true)
+            {
+                flag = true;
+                string sourthpath = ofd.SafeFileName;
+                newsourthpath = System.IO.Path.Combine(source.Replace("/bin/Debug", "/photo/"), sourthpath);
+                // Проверка на null перед установкой изображения
+                if (ofd.FileName != null)
+                {
+                    PreviewImage.Source = new BitmapImage(new Uri(ofd.FileName));
+                }
+                currentmerch.photo = $"/photo/{ofd.SafeFileName}";
+            }
+        }
+
+        private void nazClick(object sender, RoutedEventArgs e)
         {
             Admin adm = new Admin();
             Visibility = Visibility.Hidden;

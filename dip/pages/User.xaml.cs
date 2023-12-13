@@ -24,12 +24,7 @@ namespace dip.pages
             InitializeComponent();
         }
 
-        private void mainClick(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = new MainWindow();
-            Visibility = Visibility.Hidden;
-            main.Show();
-        }
+        
 
        
 
@@ -52,6 +47,14 @@ namespace dip.pages
             merches merc = new merches();
             Visibility = Visibility.Hidden;
             merc.Show();
+        }
+
+        private void autClick(object sender, RoutedEventArgs e)
+        {
+            autor aut = new autor();
+            Visibility = Visibility.Hidden;
+            aut.Show();
+
         }
     }
 }

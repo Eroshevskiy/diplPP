@@ -1,0 +1,80 @@
+﻿<Window x:Class="dip.pages.notAutorMerch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dip.pages"
+        mc:Ignorable="d"
+        Title="notAutorMerch" Height="450" Width="800">
+    <Grid Background="#3A4750" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+
+        <ListView Name="lv" Grid.Row="0" Background="#3A4750">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Image Width="150">
+                                        <Image.Source>
+                                            <Binding Path="photo">
+                                                <Binding.TargetNullValue>
+                                                    <Image Source="/res/контакты.png" />
+
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="550">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding name, StringFormat={}Название: {0}}" />
+                                    <TextBlock Text="{Binding descreption, StringFormat={}Описание: {0}}" />
+                                    <TextBlock Text="{Binding manufacturer, StringFormat={}Производитель: {0}}" />
+                                    <TextBlock Text="{Binding price, StringFormat={}Цена: {0:N2} РУБ}"  />
+                                    <TextBlock Text="{Binding newcost, StringFormat={}Цена с учетом скидки: {0:N2}}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding discount, StringFormat={}Cкидка: {0:0.##}%}" ></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding TextColor}" Value="True">
+                            <Setter Property="Background" Value="LightGreen"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            
+        </ListView>
+        
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#D72323" Foreground="#eeee" Width="60" Height="30" Margin="0,0,10,0" Click="mainClick">Назад</Button>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Content="&lt;&lt;&lt;" Click="PreviousPageButton_Click" Margin="5"/>
+            <Button Content="&gt;&gt;&gt;" Click="NextPageButton_Click" Margin="5"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

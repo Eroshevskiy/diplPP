@@ -6,41 +6,47 @@
         xmlns:local="clr-namespace:dip.pages"
         mc:Ignorable="d"
         Title="autor" MinHeight="450" MinWidth="800">
-    <Grid>
+    <Grid Background="#3A4750">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Border Background="#303841">
             <Image HorizontalAlignment="Left" VerticalAlignment="Center"  Source="/res/pngwing.com.png" Width="81" Height="126" Margin="0,0,0,-26" />
-            
 
 
 
         </Border>
         <TextBlock Text="ООО Текстиль профи -М" Foreground="#eeee" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+        <Button Click="mainClick" Content="Назад" Foreground="#eeee" Background="#D72323" HorizontalAlignment="Right" Margin="663,27,10,0" VerticalAlignment="Top" Width="75" Height="47"   FontSize="14"></Button>
+        <StackPanel Grid.Row="1" x:Name="LoginBlock" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Foreground="#eeee" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"> Введите логин:</TextBlock>
+            <TextBox Name="TxbLogin"  Width="162" Height="25" ></TextBox>
+            <TextBlock Foreground="#eeee" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"> Введите пароль:</TextBlock>
+            <TextBox Name="TxbPassword" Visibility="Collapsed"  Width="162" Height="25" ></TextBox>
+            <PasswordBox Width="162" Height="25" Name="PsbPassword" ></PasswordBox>
 
-
-
-        <Button  Content="Назад" Foreground="#eeee" Background="#D72323" HorizontalAlignment="Right" Margin="663,27,10,0" VerticalAlignment="Top" Width="75"  Height="47"  FontSize="14" Click="mainClick"/>
-
-        <StackPanel Background="#3A4750" Grid.Row="1">
-            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="36" Foreground="#eeee" FontWeight="Bold"> Авторизация</TextBlock>
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Введите логин</TextBlock>
-            <TextBox x:Name="login" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Height="25"></TextBox >
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Введите пароль</TextBlock>
-            <PasswordBox x:Name="password" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162"  Height="25"></PasswordBox >
-
-            <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Height="35" FontWeight="Bold" Click="Enter" Width="162" >Войти</Button>
-            
-
+            <Button Name="BtnInLogin" Click="BtnInLogin_Click" Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Width="162" Height="25" FontWeight="Bold" >Войти</Button>
+            <StackPanel x:Name="CaptchaTbBlock" Orientation="Horizontal" Height="28" Margin="0,10,0,0" Visibility="Collapsed">
+                <TextBlock Text="Капча:" Width="50" VerticalAlignment="Center"/>
+                <TextBox x:Name="CaptchaTB" Width="200"/>
+            </StackPanel>
+            <StackPanel x:Name="CaptchaBlock" Orientation="Vertical"  VerticalAlignment="Center" Visibility="Collapsed">
+                <Button Name="CheckCaptcha" Click="CheckCaptcha_Click">Подтвердить</Button>
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="200" Height="75" BorderBrush="#FF707070" BorderThickness="1, 1, 0, 1">
+                        <Grid Width="200" Height="75" ClipToBounds="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" Name="SPanelSymbols" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Canvas Name="CanvasNoise"></Canvas>
+                        </Grid>
+                    </Border>
+                    <Button x:Name="BtnUpdateCaptcha" VerticalAlignment="Center" Click="BtnUpdateCaptcha_Click">
+                        Обновить
+                    </Button>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
-
-
-
-
-
-
-
+        <TextBlock x:Name="BlockedTB" Text="" Width="250" TextAlignment="Center" Foreground="Red" VerticalAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock x:Name="LoginTimerTB" Width="200" TextAlignment="Center" Foreground="Red" Visibility="Collapsed"/>
     </Grid>
 </Window>

@@ -13,29 +13,34 @@ namespace dip.models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dipEntities : DbContext
+    public partial class dipEntitie : DbContext
     {
-        private static dipEntities context;
-        public static dipEntities GetContext()
+        public dipEntitie()
+            : base("name=dipEntitie")
+        {
+        }
+        private static dipEntitie context;
+        public static dipEntitie GetContext()
         {
             if (context == null)
-                context = new dipEntities();
+                context = new dipEntitie();
             return context;
         }
-        public dipEntities()
-            : base("name=dipEntities")
-        {
 
-        }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+        public static users CurrentUser = null;
+
         public virtual DbSet<merch> merch { get; set; }
+        public virtual DbSet<orders> orders { get; set; }
+        public virtual DbSet<point> point { get; set; }
+        public virtual DbSet<sostav> sostav { get; set; }
+        public virtual DbSet<status> status { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<type_users> type_users { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<vhodHis> vhodHis { get; set; }
     }
 }

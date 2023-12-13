@@ -4,12 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="467d299e47e443b5ab39abb14227a9b1" Name="Diagram1">
-        <EntityTypeShape EntityType="dipModel.merch" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dipModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dipModel.type_users" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dipModel.users" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="dipModel.FK_users_type_users" ManuallyRouted="false" />
+      <Diagram DiagramId="fc9c695605b74078b094371b8a67e758" Name="Diagram1">
+        <EntityTypeShape EntityType="dip2Model.merch" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.orders" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.point" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.sostav" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.status" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.type_users" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.users" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dip2Model.vhodHis" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="dip2Model.FK_sostav_merch" ManuallyRouted="false" />
+        <AssociationConnector Association="dip2Model.FK_orders_point" ManuallyRouted="false" />
+        <AssociationConnector Association="dip2Model.FK_orders_status" ManuallyRouted="false" />
+        <AssociationConnector Association="dip2Model.FK_orders_users" ManuallyRouted="false" />
+        <AssociationConnector Association="dip2Model.FK_sostav_orders" ManuallyRouted="false" />
+        <AssociationConnector Association="dip2Model.FK_users_type_users" ManuallyRouted="false" />
+        <AssociationConnector Association="dip2Model.FK_vhodHis_users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

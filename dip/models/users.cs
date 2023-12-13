@@ -14,11 +14,24 @@ namespace dip.models
     
     public partial class users
     {
+        internal object type_user;
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public users()
+        {
+            this.orders = new HashSet<orders>();
+            this.vhodHis = new HashSet<vhodHis>();
+        }
+    
         public int id { get; set; }
         public string login { get; set; }
         public string password { get; set; }
         public int id_type { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<orders> orders { get; set; }
         public virtual type_users type_users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<vhodHis> vhodHis { get; set; }
     }
 }

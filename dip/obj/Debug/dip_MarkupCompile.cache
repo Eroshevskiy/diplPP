@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\dip\dip\App.xaml
-111501589694
+17-291550697
 2853957467
-231227557389
-18-636583633
-MainWindow.xaml;pages\AddMerches.xaml;pages\Admin.xaml;pages\autor.xaml;pages\contacts.xaml;pages\info.xaml;pages\listview.xaml;pages\Manager.xaml;pages\merches.xaml;pages\tovari.xaml;pages\User.xaml;
+35-499905934
+19-1887207819
+MainWindow.xaml;pages\AddMerches.xaml;pages\Admin.xaml;pages\autor.xaml;pages\contacts.xaml;pages\EdirOrders.xaml;pages\info.xaml;pages\listview.xaml;pages\LogHistory.xaml;pages\Manager.xaml;pages\merches.xaml;pages\notAutorMerch.xaml;pages\OrerClient.xaml;pages\prosmZak.xaml;pages\QR.xaml;pages\tovari.xaml;pages\User.xaml;
 
 False
 
