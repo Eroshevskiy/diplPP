@@ -9,12 +9,15 @@
             <Setter Property="Background" Value="#D72323" />
             <Setter Property="Foreground" Value="#eeee" />
         </Style>
-        <!--<Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="black" />
-        </Style>-->
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#eeee" />
         </Style>
-        
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#3A4750" />
+            <!-- Другие свойства стиля для хедера столбца -->
+        </Style>
+
+
+
     </Application.Resources>
 </Application>

@@ -13,11 +13,11 @@
         </Grid.RowDefinitions>
         <DataGrid Name="BDWorkers" AutoGenerateColumns="False" Background="#3A4750">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding name}" Width="auto" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Описание" Binding="{Binding descreption}" Width="auto" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="auto" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Скидка" Binding="{Binding discount}" Width="auto" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Производитель" Binding="{Binding manufacturer}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Название"  Binding="{Binding name}" Width="auto"  ></DataGridTextColumn>
+                <DataGridTextColumn Header="Описание"  Binding="{Binding descreption}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена"  Binding="{Binding price}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Скидка"  Binding="{Binding discount}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Производитель"  Binding="{Binding manufacturer}" Width="auto" ></DataGridTextColumn>
 
                 <DataGridTemplateColumn Header="Фото" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -54,7 +54,7 @@
 
         </DataGrid>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Background="#3A4750">
             <Button Margin="0,0,5,0" Click="Add"  >Добавить</Button>
             <Button Margin="0,0,5,0" Click="obnovClick" >Обновить </Button>
             <Button Margin="0,0,5,0"  Click="prosmClick" >Посмотреть заказы</Button>

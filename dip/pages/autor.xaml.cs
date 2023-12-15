@@ -43,6 +43,35 @@ namespace dip.pages
                 StartTimer();
             }
         }
+
+        private void BtnInLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxbLogin.Text) || string.IsNullOrEmpty(PsbPassword.Password))
+            {
+                MessageBox.Show("Пожалуйста, введите логин и пароль.", "Ошибка при авторизации",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var userObj = dboconnect.modeldb.users.FirstOrDefault(x =>
+                x.login == TxbLogin.Text && x.password == PsbPassword.Password);
+
+            if (userObj == null)
+            {
+                MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                attempts++;
+                CheckAttemps();
+            }
+            else
+            {
+                MessageBox.Show($"Вы вошли как: {userObj.type_users.role}", "Уведомление",
+                MessageBoxButton.OK, MessageBoxImage.Information);
+                LogIn();
+            }
+
+        }
+
         private void LogIn()
         {
             try
@@ -115,33 +144,7 @@ namespace dip.pages
                                 "Критическая работа приложения", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-        private void BtnInLogin_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxbLogin.Text) || string.IsNullOrEmpty(PsbPassword.Password))
-            {
-                MessageBox.Show("Пожалуйста, введите логин и пароль.", "Ошибка при авторизации",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            var userObj = dboconnect.modeldb.users.FirstOrDefault(x =>
-                x.login == TxbLogin.Text && x.password == PsbPassword.Password);
-
-            if (userObj == null)
-            {
-                MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                attempts++;
-                CheckAttemps();
-            }
-            else
-            {
-                MessageBox.Show($"Вы вошли как: {userObj.type_users.role}", "Уведомление",
-                MessageBoxButton.OK, MessageBoxImage.Information);
-                LogIn();
-            }
-
-        }
+        
         private void TbxShowPass_MouseDown(object sender, MouseButtonEventArgs e)
         {
             TxbPassword.Visibility = Visibility.Visible;

@@ -64,12 +64,15 @@
                         <DataTrigger Binding="{Binding TextColor}" Value="True">
                             <Setter Property="Background" Value="LightGreen"/>
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding TextColor}" Value="false">
+                            <Setter Property="Background" Value="#3A4750"/>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Добавить к заказу" Click="AddToOrder_Click"/>
+                <ContextMenu >
+                    <MenuItem  Header="Добавить к заказу" Click="AddToOrder_Click"/>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>

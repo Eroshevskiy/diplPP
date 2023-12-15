@@ -35,6 +35,21 @@ namespace dip.pages
 
 
         }
+
+
+        private void MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (lv.SelectedItem == null)
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                merch selectedMerch = lv.SelectedItem as merch;
+                MessageBox.Show($"Selected Merch:\nName: {selectedMerch.name}\nManufacturer: {selectedMerch.manufacturer}\nPrice: {selectedMerch.price}", "Merchandise Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
         private void PreviousPageButton_Click(object sender, RoutedEventArgs e)
         {
             if (_currentPage > 1)
@@ -67,23 +82,18 @@ namespace dip.pages
                 ShowOrderButton.Visibility = Visibility.Collapsed;
             }
         }
-
-
-
-        
-
-        private void MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void ShowOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            if (lv.SelectedItem == null)
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                merch selectedMerch = lv.SelectedItem as merch;
-                MessageBox.Show($"Selected Merch:\nName: {selectedMerch.name}\nManufacturer: {selectedMerch.manufacturer}\nPrice: {selectedMerch.price}", "Merchandise Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            OrerClient orderViewWindow = new OrerClient(orderItems);
+            orderViewWindow.ShowDialog();
+            
         }
+
+
+
+
+
+
 
         private void AddToOrder_Click(object sender, RoutedEventArgs e)
         {
@@ -122,11 +132,7 @@ namespace dip.pages
             lv.ItemsSource = itemsForPage;
         }
 
-        private void ShowOrderButton_Click(object sender, RoutedEventArgs e)
-        {
-            OrerClient orderViewWindow = new OrerClient(orderItems);
-            orderViewWindow.ShowDialog();
-        }
+       
         public class OrderItem
         {
             public int OrderId { get; set; }
