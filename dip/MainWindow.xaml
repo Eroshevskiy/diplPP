@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dip"
         mc:Ignorable="d"
-        Title="ООО Текстиль Профи - М" MinHeight="450" MinWidth="800">
+        Title="ООО Текстиль Профи - М" MinHeight="450" MinWidth="500" MaxHeight="450" MaxWidth="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Border Background="#303841">
-            <Image HorizontalAlignment="Left" VerticalAlignment="Center"  Source="/res/pngwing.com.png" Width="81" Height="126" Margin="0,0,0,-26" />
+            <Image VerticalAlignment="Top" HorizontalAlignment="Left"  Source="/res/pngwing.com.png" Height="126"  />
 
 
 
         </Border>
-        <TextBlock Text="ООО Текстиль профи -М" Foreground="#eeee" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></TextBlock>
-        
+        <TextBlock Text="ООО Текстиль профи -М" Foreground="#eeee" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"></TextBlock>
 
-        
-        <Button  Content="Войти" Foreground="#eeee" Background="#D72323" HorizontalAlignment="Right" Margin="663,27,10,0" VerticalAlignment="Top" Width="75" Height="47"   FontSize="14" Click="autorClick"/>
+
+
+        <Button  Content="Войти" Foreground="#eeee" Background="#D72323" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="75" Height="47"   FontSize="14" Click="autorClick"/>
 
         <StackPanel Background="#3A4750" Grid.Row="1">
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="36" Foreground="#eeee" FontWeight="Bold"> Регистрация</TextBlock>
@@ -32,8 +32,8 @@
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="18">Повторите пароль</TextBlock>
             <PasswordBox x:Name="proof" VerticalAlignment="Center" HorizontalAlignment="Center" Width="162" Height="25"></PasswordBox >
             <Button Background="#D72323" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eeee" FontSize="16" Margin="0,30,0,0" Height="35" FontWeight="Bold" Click="regClick" >Зарегистрироваться</Button>
-            
-            
+
+
 
         </StackPanel>
 

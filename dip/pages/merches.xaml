@@ -40,7 +40,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding name, StringFormat={}Название: {0}}" />
+                                    <TextBlock Text="{Binding name, StringFormat={}Название: {0}}" FontWeight="Normal" />
                                     <TextBlock Text="{Binding descreption, StringFormat={}Описание: {0}}" />
                                     <TextBlock Text="{Binding manufacturer, StringFormat={}Производитель: {0}}" />
                                     <TextBlock Text="{Binding price, StringFormat={}Цена: {0:N2} РУБ}"  />
@@ -62,7 +62,7 @@
                 <Style TargetType="ListViewItem">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding TextColor}" Value="True">
-                            <Setter Property="Background" Value="LightGreen"/>
+                            <Setter Property="Background" Value="DarkGreen"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding TextColor}" Value="false">
                             <Setter Property="Background" Value="#3A4750"/>

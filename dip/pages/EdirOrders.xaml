@@ -26,7 +26,7 @@
                 <Button Width="auto" Click="Save">Сохранить</Button>
             </StackPanel>
         </WrapPanel>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="nazClick">Назад</Button>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="nazClick" Width="45" Height="25" Margin="0,5,5,0">Назад</Button>
         
     </Grid>
 </Window>

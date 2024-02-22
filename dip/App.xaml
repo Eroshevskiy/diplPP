@@ -11,6 +11,11 @@
         </Style>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#eeee" />
+            
+            
+            
+            
+            
         </Style>
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#3A4750" />

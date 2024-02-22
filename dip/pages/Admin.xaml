@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dip.pages"
         mc:Ignorable="d"
-        Title="Admin" MinHeight="450" MinWidth="800">
+        Title="Admin" MaxHeight="750" MinHeight="750" MaxWidth="900" MinWidth="900">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

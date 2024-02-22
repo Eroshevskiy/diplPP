@@ -42,24 +42,30 @@ namespace dip
                 {
                     login.ToolTip = "Мало символов!";
                     login.BorderBrush = Brushes.Red;
+                    login.Foreground = Brushes.Black;
                     hasError = true;
                 }
                 else
                 {
                     login.ToolTip = "Все хорошо!";
                     login.BorderBrush = Brushes.LimeGreen;
-                }
+                    login.Foreground = Brushes.Black;
+            }
 
                 if (pas.Length < 5)
                 {
                     password.ToolTip = "Мало символов!";
                     password.BorderBrush = Brushes.Red;
+                    login.Foreground = Brushes.Black;   
                     hasError = true;
                 }
                 else
                 {
                     password.ToolTip = "Все хорошо!";
                     password.BorderBrush = Brushes.LimeGreen;
+                login.Foreground = Brushes.Black;
+
+
                 }
 
                 if (proo != pas)
